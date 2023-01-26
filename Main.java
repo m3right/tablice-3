@@ -20,20 +20,36 @@ public class Main {
          }
          
          int min_x = 0, min_y = 0;
-         for ( int i = 0; i < x; i++ ) 
+         int[] minima = new int[x];
+         for ( int i = 0; i < x; i++ )
+         {
+            minima[i] = m[i][0];
             for ( int j = 0; j < y; j++ )
-               if ( m[i][j] < m[min_x][min_y] ) {
-                  min_x = i;
-                  min_y = j;
+               if ( m[i][j] < minima[i] ) {
+                  minima[i] = m[i][j];
                }
+         }
+         for(int i=0; i<x; i++)
+            System.out.println(minima[i]);
          
-         System.out.println("Najmniejszy element znajduje sie w wierszu nr "+
-                            (min_x)+" i kolumnie nr "+(min_y)+
-                            " a jego wartosc wynosi "+m[min_x][min_y]);
+            System.out.println("To jest srednia: " + average(minima,x));
+
       } catch(IOException e) {
       }
    }
+   public static float average(int[] tablica, int rozmiar) {
+      float average = (float)suma(tablica,rozmiar)/rozmiar;
+    return average;
 }
+   public static int suma(int[] tablica, int rozmiar) {
+   int s = 0;
+   for ( int i = 0; i < rozmiar; i++ )
+      s += tablica[i];
+   return s;
+}
+
+}
+
 
 /*
  * Cwiczenia:
